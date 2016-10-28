@@ -36,10 +36,10 @@ public class MoveToFront {
 	    // TO BE ADDED
 		
 		while(!in.isEmpty())
-		{
+		{			
 			char currIn = in.readChar();
-				AL.remove(currIn);
-				AL.add(0, currIn);
+			AL.remove(currIn);
+			AL.add(0, currIn);				
 		}
 		
 	}

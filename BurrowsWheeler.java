@@ -1,4 +1,4 @@
-package s5;
+package aaa5;
 
 import edu.princeton.cs.algs4.BinaryIn;
 import edu.princeton.cs.algs4.BinaryOut;

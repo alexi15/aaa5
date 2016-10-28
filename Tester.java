@@ -1,6 +1,6 @@
 // Tester for S4 in Reiknirit fall 2016
 // 11 October 2016, Magnus M. Halldorsson
-package s5;
+package aaa5;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
