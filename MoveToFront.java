@@ -49,8 +49,8 @@ public class MoveToFront {
 				}
 				count++;
 			}
-			out.write(count);
-			AL.remove(currIn);
+			out.write((byte)count);
+			AL.remove(count);
 			AL.add(0, currIn);
 			StdOut.println(AL.get(0));
 		}					
