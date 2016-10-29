@@ -52,7 +52,6 @@ public class MoveToFront {
 			out.write((byte)count);
 			AL.remove(count);
 			AL.add(0, currIn);
-			StdOut.println(AL.get(0));
 		}					
 	}
 
@@ -63,11 +62,19 @@ public class MoveToFront {
 		init();
 		
 		while(!in.isEmpty())
-		{
+		{		
 			char currIn = in.readChar();
-			out.write(currIn);
-			AL.remove(currIn);
-			AL.add(0, currIn);
+			char toReturn = 'a';
+			for(int i = 0; i < 256; i++)
+			{
+				if(currIn == i)
+				{
+					toReturn = AL.get(i);
+				}
+			}
+			out.write(toReturn);
+			AL.remove((int) currIn);
+			AL.add(0, toReturn);
 			
 		}
 	}
