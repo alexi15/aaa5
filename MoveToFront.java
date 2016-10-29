@@ -13,20 +13,22 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class MoveToFront {
 	
-	int[] order = new int[256];
+	private static char[] alph = new char[256];
 	PriorityQueue<Character> priQ = new PriorityQueue<Character>();
 	Queue<Character> Q = new Queue<Character>();
 	private static ArrayList<Character> AL = new ArrayList<Character>();
 	
 	
 	private static void init() {
-		// TODO Auto-generated constructor stub
-		for(int i = 0; i < 256; i++)
+		
+		for(char i = 0; i < 256; i++)
 		{
-			//order[i] = (char) i;
-			AL.add((char) i);
-//			StdOut.println(AL.get(i));
+			//order[i] = (char) (i & 0xff);
+			AL.add(i);
+			//StdOut.println(add.get(i));
 		}
+		
+		
 	}
 
 	// apply move-to-front encoding
@@ -36,35 +38,56 @@ public class MoveToFront {
 	    // TO BE ADDED
 		
 		while(!in.isEmpty())
-		{			
+		{
 			char currIn = in.readChar();
+			int count = 0;
+			for(int i = 0; i < 256; i++)
+			{
+				if(currIn == AL.get(i))
+				{
+					break;
+				}
+				count++;
+			}
+			out.write(count);
 			AL.remove(currIn);
-			AL.add(0, currIn);				
-		}
-		
+			AL.add(0, currIn);
+			StdOut.println(AL.get(0));
+		}					
 	}
+
 	
 	// apply move-to-front decoding
 	public static void decode(BinaryIn in, BinaryOut out) {
 	    // TO BE ADDED
+		init();
+		
+		while(!in.isEmpty())
+		{
+			char currIn = in.readChar();
+			out.write(currIn);
+			AL.remove(currIn);
+			AL.add(0, currIn);
+			
+		}
 	}
 	
 	// if args[0] is '-', apply move-to-front encoding
 	// if args[0] is '+', apply move-to-front decoding
 	// if args[0] is 'b', perform both
 	public static void main(String[] args) {
-		/*if (args.length < 1) {
+		if (args.length < 1) {
 			StdOut.println("Usage: java MoveToFront (-|+|b) <infile> <outfile>");
 			return;
 		}
-		*/
+		/*
 		char n0 = '-';
-		String n1 = "C:\\Users\\Alex\\workspace\\Reiknirit\\src\\s5\\abra.txt";
-		String n2 = "abra.mdf";
-		
-		BinaryIn in = new BinaryIn(n1);//args[1]);
-		BinaryOut out = new BinaryOut(n2);//args[2]);
-		char ch = n0;//args[0].charAt(0);
+		String n1 = "C:/Users/Arnar/Downloads/Data/abra.txt";
+		String n2 = "C:/Users/Arnar/Downloads/Data/abraOut.txt";
+		*/
+		BinaryIn in = new BinaryIn(args[1]);
+		BinaryOut out = new BinaryOut(args[2]);
+		char ch = args[0].charAt(0);
 		if (ch == '-')
 			encode(in, out);
 		else if (ch == '+')
@@ -73,7 +96,7 @@ public class MoveToFront {
 			encode(in,out);
 			out.close();
 			BinaryIn in2 = new BinaryIn(args[2]);
-			out = new BinaryOut(n2/*args[2]*/+".out");
+			out = new BinaryOut(args[2]+".out");
 			decode(in2,out);
 		}
 		out.close(); 
