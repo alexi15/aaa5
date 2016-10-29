@@ -23,11 +23,11 @@
  *  divided by the number of bytes in the message).
  *****************************************************************************/
 
-File     Encoding Time    Decoding time      Compression ratio
+File       Encoding Time     Decoding time      Compression ratio
 ----------------------------------------------------------------
-
-
-
+abra.txt	0,031 s		0,022 s			1,83
+alphanum.txt	0,035 s		0,055 s			2,13
+amendments	1,45 s		1,507 s			0,88
 
 /******************************************************************************
  *  Compare the results of your program (compression ratio and running
